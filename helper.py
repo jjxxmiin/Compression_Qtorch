@@ -78,3 +78,21 @@ def print_size_of_model(model):
     os.remove('temp.p')
 
 
+def run_benchmark(model_file, img_loader):
+    elapsed = 0
+    model = torch.jit.load(model_file)
+    model.eval()
+    num_batches = 5
+    # Run the scripted model on a few batches of images
+    for i, (images, target) in enumerate(img_loader):
+        if i < num_batches:
+            start = time.time()
+            output = model(images)
+            end = time.time()
+            elapsed = elapsed + (end-start)
+        else:
+            break
+    num_images = images.size()[0] * num_batches
+
+    print('Elapsed time: %3.0f ms' % (elapsed/num_images*1000))
+    return elapsed
