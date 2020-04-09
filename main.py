@@ -2,6 +2,7 @@ import os
 import torch
 import argparse
 
+
 def get_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset', type=str, default='mnist', help='Selection : [mnist, cifar10, cifar100, tiny-imagenet, imagenet]')
@@ -10,6 +11,7 @@ def get_parser():
     args = parser.parse_args()
 
     return args
+
 
 def main():
     # arguments
@@ -20,9 +22,11 @@ def main():
     else:
         device = args.device
 
-    print(f"Dataset : {args.dataset}\nmodel : {args.model}\ndevice : {device}")
+    print(f"Dataset : {args.dataset}\n"
+          f"model : {args.model}\n"
+          f"device : {device}")
 
-    
+
 
 if __name__ == "__main__":
     main()

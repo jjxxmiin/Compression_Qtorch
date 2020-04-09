@@ -1,9 +1,8 @@
-import time
 import torch.nn as nn
 import torch.quantization
 from loader import get_imagenet_1k_loaders
 from models.mobilenetv2 import load_model, print_size_of_model
-from helper import evaluate, run_benchmark
+from examples.helper import evaluate, run_benchmark
 
 # # Setup warnings
 import warnings
